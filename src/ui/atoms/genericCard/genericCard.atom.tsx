@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Text, View } from 'react-native';
+import { Image, Text, View, TouchableOpacity } from 'react-native';
 import { styles } from './genericCard.styles';
 
 interface Props {
@@ -7,17 +7,19 @@ interface Props {
   subTitle: string;
   backgroundColor: string;
   image: any;
+  onPress?: () => void; // Optional prop to handle click or interaction
 }
 
-export const GenericCard = ({ title, subTitle, backgroundColor, image }: Props) => {
+export const GenericCard = ({ title, subTitle, backgroundColor, image, onPress }: Props) => {
   return (
-    <View
+    <TouchableOpacity
+      disabled={!onPress}
       style={[
         styles.container,
-        {
-          backgroundColor: backgroundColor ?? 'aqua',
-        },
-      ]}>
+        { backgroundColor: backgroundColor ?? '#fff' }, // Default white background if not provided
+      ]}
+      onPress={onPress}
+      activeOpacity={0.8}>
       {/* IMAGE */}
       <View style={styles.containerImage}>
         <Image
@@ -30,11 +32,9 @@ export const GenericCard = ({ title, subTitle, backgroundColor, image }: Props) 
       {/* DESCRIPTION */}
       <View style={styles.containerDescription}>
         <Text style={styles.title}>{title ?? 'Titolo mancante'}</Text>
-        <View style={styles.containerSubtTitle}>
-          <Text>{subTitle ?? 'Descrizione mancante'}</Text>
-        </View>
+        <Text style={styles.subTitle}>{subTitle ?? 'Descrizione mancante'}</Text>
       </View>
       {/* DESCRIPTION */}
-    </View>
+    </TouchableOpacity>
   );
 };
