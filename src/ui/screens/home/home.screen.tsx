@@ -48,9 +48,7 @@ const HomeScreen = ({ navigation }: Props) => {
         <Card
           cart={item}
           onPress={() => {
-            navigation.navigate(Screen.Detail, {
-              id: item.id,
-            });
+            navigation.navigate(Screen.Detail);
           }}
         />
       );

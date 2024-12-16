@@ -10,7 +10,7 @@ const RootStack = () => {
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Group>
         <Stack.Screen name={'TabNavigator'} component={TabNavigator} />
-        <Stack.Screen name={Screen.Detail} component={DetailScreen} initialParams={{ text: '' }} />
+        <Stack.Screen name={Screen.Detail} component={DetailScreen} />
       </Stack.Group>
     </Stack.Navigator>
   );
