@@ -1,25 +1,18 @@
 export enum Screen {
-  HomeMain = 'HomeMain',
   Home = 'Home',
   Detail = 'Detail',
-  Search = 'Search',
+  Settings = 'Settings',
 }
 
 export type TabParams = {
   [Screen.Home]: undefined; // Home ha il proprio Stack interno
-  [Screen.Detail]: {
-    item: string;
-  };
-};
-
-export type HomeStackParamList = {
-  [Screen.HomeMain]: {
-    text: string;
-  };
-  [Screen.Search]: undefined;
+  [Screen.Settings]: undefined; // Home ha il proprio Stack interno
 };
 
 // Per il RootStack
 export type MainParamList = {
   TabNavigator: undefined;
+  [Screen.Detail]: {
+    id: string;
+  };
 };

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Image } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import DetailScreen from '../../screens/detail.screen';
 import { TabParams, Screen } from '../types';
-import HomeStackNavigator from './home.tab.navigator';
+import HomeScreen from '../../screens/home.screen';
+import SettingsScreen from '../../screens/settings.screen';
 
 const Tab = createBottomTabNavigator<TabParams>();
 export default function TabNavigator() {
@@ -16,7 +16,7 @@ export default function TabNavigator() {
             const image =
               route.name === Screen.Home
                 ? 'https://cdn-icons-png.flaticon.com/512/25/25694.png'
-                : 'https://cdn-icons-png.flaticon.com/512/263/263142.png';
+                : 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Windows_Settings_app_icon.png/1200px-Windows_Settings_app_icon.png';
             return (
               <Image
                 source={{ uri: image }}
@@ -28,8 +28,8 @@ export default function TabNavigator() {
           tabBarInactiveTintColor: 'gray',
         };
       }}>
-      <Tab.Screen name={Screen.Home} component={HomeStackNavigator} />
-      <Tab.Screen name={Screen.Detail} component={DetailScreen} initialParams={{ item: '' }} />
+      <Tab.Screen name={Screen.Home} component={HomeScreen} />
+      <Tab.Screen name={Screen.Settings} component={SettingsScreen} />
     </Tab.Navigator>
   );
 }

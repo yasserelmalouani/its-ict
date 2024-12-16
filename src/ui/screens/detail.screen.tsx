@@ -11,12 +11,12 @@ interface Props {
 }
 
 const DetailScreen = ({ navigation, route }: Props) => {
-  const { item } = route.params;
+  const { id } = route.params;
 
   return (
     <View style={styles.container}>
       <Text>Schermata Dettagli</Text>
-      <Text>Parametro ricevuto: {item}</Text>
+      <Text>Parametro ricevuto: {id}</Text>
       <Button title={'Go to home'} onPress={() => navigation.goBack()} />
     </View>
   );
