@@ -3,7 +3,7 @@ import { FlatList, ListRenderItem, View } from 'react-native';
 import { styles } from './home.styles';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { MainParamList, Screen } from '../../navigation/types';
-import Card from '../../atoms/card/card.atom';
+import Card from '../../atoms/cart/cart.atom';
 
 interface Response {
   carts: Cart[];
@@ -48,7 +48,13 @@ const HomeScreen = ({ navigation }: Props) => {
         <Card
           cart={item}
           onPress={() => {
-            navigation.navigate(Screen.Detail);
+            if (!item.id) {
+              return;
+            }
+
+            navigation.navigate(Screen.Detail, {
+              id: item.id,
+            });
           }}
         />
       );

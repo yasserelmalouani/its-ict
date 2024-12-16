@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
-import styles from './card.styles';
+import styles from './cart.styles';
 
 interface Product {
   id: number;
