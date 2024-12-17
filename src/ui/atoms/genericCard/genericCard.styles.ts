@@ -37,7 +37,12 @@ export const styles = StyleSheet.create({
   },
   subTitle: {
     fontSize: 14,
-    color: '#777',
+    color: '#fff',
     marginTop: 5,
+  },
+  imageLoader: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

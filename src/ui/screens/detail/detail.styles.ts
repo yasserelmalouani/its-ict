@@ -22,4 +22,9 @@ export const styles = StyleSheet.create({
     width: 24,
     height: 24,
   },
+  navigatorContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 14,
+  },
 });

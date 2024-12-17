@@ -51,15 +51,15 @@ const HomeScreen = ({ navigation }: Props) => {
             if (!item.id) {
               return;
             }
-
             navigation.navigate(Screen.Detail, {
               id: item.id,
+              idsArray: carts.map((el) => el.id),
             });
           }}
         />
       );
     },
-    [navigation]
+    [carts, navigation]
   );
 
   const ItemSeparatorComponent = useCallback(() => <View style={styles.itemSeparator}></View>, []);
