@@ -2,7 +2,7 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { TabParams, Screen } from '../types';
 import HomeScreen from '../../screens/home/home.screen';
-import SettingsScreen from '../../screens/settings.screen';
+import SettingsScreen from '../../screens/settings/settings.screen';
 import { Ionicons } from '@expo/vector-icons';
 import NotificationsScreen from '../../screens/notifications/notifications.screen';
 

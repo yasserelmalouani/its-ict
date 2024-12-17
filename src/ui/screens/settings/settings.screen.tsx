@@ -1,8 +1,8 @@
 import { Button, Text, View } from 'react-native';
 import React from 'react';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { MainParamList, Screen } from '../navigation/types';
-import { styles } from './styles';
+import { MainParamList, Screen } from '../../navigation/types';
+import { settingsStyles } from './settings.styles';
 
 interface Props {
   navigation: NativeStackNavigationProp<MainParamList, Screen.Settings>;
@@ -10,7 +10,7 @@ interface Props {
 
 const SettingsScreen = ({ navigation }: Props) => {
   return (
-    <View style={styles.container}>
+    <View style={settingsStyles.container}>
       <Text>Schermata Settings</Text>
       <Button title={'Go to home'} onPress={() => navigation.navigate('Home')} />
     </View>
