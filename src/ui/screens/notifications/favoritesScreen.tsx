@@ -1,37 +1,34 @@
-import React, { useCallback, useEffect } from 'react';
-import { FlatList, View } from 'react-native';
-import { styles } from './home.styles';
+import React, { useCallback, useEffect, useMemo } from 'react';
+import { FlatList, View, Text } from 'react-native';
+import { styles } from './favorites.styles';
 import Card from '../../atoms/cart/cart.atom';
 import { useCarts } from '../hook/useCarts.facade';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { MainParamList, Screen } from '../../navigation/types';
 
 interface Props {
-  navigation: NativeStackNavigationProp<MainParamList, Screen.Home>;
+  navigation: NativeStackNavigationProp<MainParamList, Screen.Favorites>;
 }
 
-const HomeScreen = ({ navigation }: Props) => {
+const FavoritesScreen = ({ navigation }: Props) => {
   const { carts, favoriteIds, refreshCarts, loadFavorites, addFavorite } = useCarts();
 
-  // ** USE CALLBACK ** //
+  // **DATA ** //
+  const favorites = useMemo(
+    () => carts.filter((cart) => favoriteIds.includes(cart.id)),
+    [carts, favoriteIds]
+  );
+
+  // ** CALLBACKS ** //
   const renderItem = useCallback(
     ({ item }) => (
       <Card
         cart={item}
         onAddFavorite={() => addFavorite(item)}
         selected={favoriteIds.includes(item.id)}
-        onPress={() => {
-          if (!item.id) {
-            return;
-          }
-          navigation.navigate(Screen.Detail, {
-            id: item.id,
-            idsArray: carts.map((el) => el.id),
-          });
-        }}
       />
     ),
-    [addFavorite, carts, favoriteIds, navigation]
+    [addFavorite, favoriteIds]
   );
 
   const ItemSeparatorComponent = useCallback(() => <View style={styles.itemSeparator}></View>, []);
@@ -49,15 +46,19 @@ const HomeScreen = ({ navigation }: Props) => {
 
   return (
     <View style={styles.container}>
-      <FlatList
-        showsVerticalScrollIndicator={false}
-        data={carts}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id.toString()}
-        ItemSeparatorComponent={ItemSeparatorComponent}
-      />
+      {favorites.length > 0 ? (
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          data={favorites}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id.toString()}
+          ItemSeparatorComponent={ItemSeparatorComponent}
+        />
+      ) : (
+        <Text>No favorites yet</Text>
+      )}
     </View>
   );
 };
 
-export default HomeScreen;
+export default FavoritesScreen;

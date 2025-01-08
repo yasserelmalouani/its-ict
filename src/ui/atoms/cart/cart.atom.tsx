@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 import styles from './cart.styles';
+import { Ionicons } from '@expo/vector-icons';
 
 interface Product {
   id: number;
@@ -25,14 +26,26 @@ interface Cart {
 
 interface CartCardProps {
   cart: Cart;
+  selected: boolean;
   onPress: () => void;
+  onAddFavorite: () => void;
 }
 
-const Card = ({ cart, onPress }: CartCardProps) => {
+const Card = ({ cart, selected, onAddFavorite, onPress }: CartCardProps) => {
   return (
     <>
       <View style={styles.container}>
-        <Text style={styles.titleStyle}>USER CART: {cart.userId}</Text>
+        <View style={styles.containerHeader}>
+          <View style={styles.titleContainer}>
+            <Text style={styles.titleStyle}>USER CART: {cart.userId}</Text>
+          </View>
+          <Ionicons
+            onPress={onAddFavorite}
+            name={selected ? 'heart-sharp' : 'heart-outline'}
+            size={28}
+            color={'#ffd700'}
+          />
+        </View>
         <View style={styles.containerImage}>
           <Image
             source={{

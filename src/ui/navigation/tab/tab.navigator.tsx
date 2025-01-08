@@ -4,7 +4,7 @@ import { TabParams, Screen } from '../types';
 import HomeScreen from '../../screens/home/home.screen';
 import SettingsScreen from '../../screens/settings/settings.screen';
 import { Ionicons } from '@expo/vector-icons';
-import NotificationsScreen from '../../screens/notifications/notifications.screen';
+import FavoritesScreen from '../../screens/notifications/favoritesScreen';
 
 const Tab = createBottomTabNavigator<TabParams>();
 export default function TabNavigator() {
@@ -24,8 +24,8 @@ export default function TabNavigator() {
               switch (route.name) {
                 case Screen.Home:
                   return 'home';
-                case Screen.Notifications:
-                  return 'notifications';
+                case Screen.Favorites:
+                  return 'heart';
                 case Screen.Settings:
                   return 'settings';
               }
@@ -37,7 +37,7 @@ export default function TabNavigator() {
       }}>
       <Tab.Screen name={Screen.Home} component={HomeScreen} />
       <Tab.Screen name={Screen.Settings} component={SettingsScreen} />
-      <Tab.Screen name={Screen.Notifications} component={NotificationsScreen} />
+      <Tab.Screen name={Screen.Favorites} component={FavoritesScreen} />
     </Tab.Navigator>
   );
 }

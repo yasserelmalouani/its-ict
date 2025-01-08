@@ -16,12 +16,19 @@ const styles = StyleSheet.create({
 
     elevation: 5,
   },
+  containerHeader: {
+    flexDirection: 'row',
+  },
+  titleContainer: {
+    flex: 1,
+  },
   titleStyle: {
     textAlign: 'center',
     fontWeight: '600',
     fontSize: 20,
   },
   containerImage: {
+    paddingTop: 36,
     alignItems: 'flex-end',
   },
   imageStyle: {

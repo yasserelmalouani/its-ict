@@ -3,13 +3,17 @@ export enum Screen {
   Home = 'Home',
   Detail = 'Detail',
   Settings = 'Settings',
-  Notifications = 'Notifications',
+  Favorites = 'Favorites',
 }
 
 export type TabParams = {
-  [Screen.Home]: undefined;
+  [Screen.Home]: {
+    hasFavoritesUpdated: boolean;
+  };
   [Screen.Settings]: undefined;
-  [Screen.Notifications]: undefined;
+  [Screen.Favorites]: {
+    hasFavoritesUpdated: boolean;
+  };
 };
 
 export type MainParamList = {
