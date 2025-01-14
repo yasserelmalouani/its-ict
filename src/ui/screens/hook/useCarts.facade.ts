@@ -25,13 +25,15 @@ export interface Cart {
 
 export const useCarts = () => {
   const [carts, setCarts] = useState<Cart[]>([]);
+  const [initialCarts, setInitialCarts] = useState<Cart[]>([]);
   const [favoriteIds, setFavoriteIds] = useState<number[]>([]);
 
   const refreshCarts = useCallback(async () => {
     try {
       const response = await fetch('https://dummyjson.com/carts');
       const data = await response.json();
-      setCarts(data.carts);
+      setInitialCarts([...data.carts]);
+      setCarts([...data.carts]);
     } catch (error) {
       console.error('Error fetching carts:', error);
     }
@@ -61,6 +63,9 @@ export const useCarts = () => {
 
   return {
     carts,
+    setCarts,
+    initialCarts,
+    setInitialCarts,
     favoriteIds,
     refreshCarts,
     loadFavorites,

@@ -22,4 +22,10 @@ export const styles = StyleSheet.create({
     width: 24,
     height: 24,
   },
+
+  filtersContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 16,
+  },
 });
